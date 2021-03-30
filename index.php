@@ -59,11 +59,25 @@ use FlickerLeap\Square;
 
         <?php
             // Use the Httpful client to output the API results here.
+
+            $endpoint = 'https://pokeapi.co/api/v2/pokemon/mewtwo';
+            $response = \Httpful\Request::get($endpoint)
+                          ->send();
+  
+            $data = json_decode($response,true);
+  
+            echo '<h4>Pokemon name: ' . ucwords($data['name']) . '</h4>';
+            echo '<h4>Pokemon ability: ' . ucwords($data['abilities'][0]['ability']['name']) . '</h4>';
+            echo '<h4>Pokemon type: ' . ucwords($data['types'][0]['type']['name']) . '</h4>';
+  
         ?>
 
         <h2>Recommendations</h2>
 
-        <p><!-- Let us know how we can improve this test here --></p>
+        <p><!-- Let us know how we can improve this test here -->
+        It would be nice to give freedom to use other http clients like guzzlehttp.<br />
+        While Httpful client is easy to use, it has limited documentation.
+        </p>
 
     </body>
 </html>
