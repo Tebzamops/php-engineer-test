@@ -16,10 +16,11 @@ class Rectangle extends Shape
      *
      * @param int $length
      */
-    public function __construct($length = 5) {
+    public function __construct($length = 5, $column = 12) {
         $this->name = 'Rectangle';
         $this->sides = 4;
         $this->sideLength = $length;
+        $this->column = $column; 
         $this->pixel = "*";
     }
 
@@ -33,23 +34,31 @@ class Rectangle extends Shape
     }
 
     /**
-     * Draws the square.
+     * Draws the rectangle.
      */
     public function draw()
     {
-        for ($i = 0; $i < $this->sideLength; $i++)
-        {
-            for ($j = 0; $j < $this->sideLength; $j++) {
-                if ($i == 0
-                    || $j == 0
-                    || $i == $this->sideLength - 1
-                    || $j == $this->sideLength * 2 - 1) {
-                    echo $this->pixel; // TODO: Fix alignment at some point
+
+        for ($i = 1; $i <= $this->sideLength; $i++) {
+
+            for ($j = 1; $j <= $this->column; $j++) {
+
+                if ($i == 1 || $i == $this->sideLength) {
+
+                    echo $this->pixel . $this->padding(2);
+
+                }
+                 else if ($j == 1 || $j == $this->column) {
+
+                    echo $this->pixel . $this->padding(12);
+
                 } else {
-                    echo $this->padding(4);
+
+                    echo "&nbsp;&nbsp;&nbsp;";
                 }
             }
-             $this->newLine();
+
+            $this->newLine(); 
         }
     }
 }

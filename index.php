@@ -50,6 +50,9 @@ use FlickerLeap\Square;
 
         <?php
             // output your working rectangle here
+            $rectangle = new Rectangle();
+
+            print $rectangle->draw();
         ?>
 
         <h2>Output the result of the API</h2>
